@@ -86,9 +86,19 @@
         <h1>Sobre nós</h1>
     </div>  
     <div class="container text-center">
-                
-                <p>Somos um grupo de 6 estudantes de tecnologia, cursando o 4o semestre de Sistemas da Informação. Além de todos nós sermos apaixonados por carros antigos, queríamos unir nossa profissão aos gostos de cada um. Em nossa proposta, temos pelos menos um carro que é a paixão de cada e por isso, colocamos o nosso melhor neste site para mostrarmos a todos a nossa capacidade, dedicação, aprendizado e muita superação.</p>
-            </div>
+        <p>Somos um grupo de 6 estudantes de tecnologia, cursando o 4o semestre de Sistemas da Informação. Além de todos nós sermos apaixonados por carros antigos, queríamos unir nossa profissão aos gostos de cada um. Em nossa proposta, temos pelos menos um carro que é a paixão de cada e por isso, colocamos o nosso melhor neste site para mostrarmos a todos a nossa capacidade, dedicação, aprendizado e muita superação.</p><br>
+    </div>
+    <div class="page-header">
+        <h1 style="text-align: left;">Integrantes</h1>
+    </div>
+    <div class="container text-center">
+        <p style="text-align: left;">Matheus Delmondes - 818124435</p>
+        <p style="text-align: left;">Bruno Sobral - 818146212</p>
+        <p style="text-align: left;">Rodrigo Takayuki - 818112794</p>
+        <p style="text-align: left;">Pablo Cuervo - 818146716</p>
+        <p style="text-align: left;">Márcia Menezes - 818141547</p>
+        <p style="text-align: left;">Larissa Andrade - 818236621</p>
+    </div>
    
         <div class="footer">
                 <small class="nav-footer-copyright">

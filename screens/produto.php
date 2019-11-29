@@ -28,6 +28,18 @@ include_once("./banco/conexao.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+    <style>
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #fff;
+   color: #000;
+   text-align: center;
+}
+</style>
+
     <title>Carros Antigos</title>
     </head> 
     <div class="container-fluid">
@@ -80,58 +92,51 @@ include_once("./banco/conexao.php");
             <h3>Ache o seu sonho</h3><br>
             <?php
 
-                $listar = "SELECT u.nome_completo, v.modelo, v.marca, v.valor, v.foto, v.descricao, v.id as veiculo_id, v.id_user, u.id as us_id
-                FROM Usuario as u
-                INNER JOIN veiculo as v on v.id_user = u.id";
+                $listar = "SELECT 
+                                        u.nome_completo, 
+                                        v.modelo, 
+                                        v.marca, 
+                                        v.valor, 
+                                        v.foto, 
+                                        v.descricao, 
+                                        v.id as veiculo_id, 
+                                        v.id_user, u.id as us_id
+                            FROM        Usuario as u
+                            INNER JOIN  veiculo as v on v.id_user = u.id";
 
                 $res_lista = mysqli_query($conn, $listar);
               
 
-                while($row_usuario = mysqli_fetch_assoc($res_lista)){                    
-                    echo '
-                    <div class="alert alert-success" role="alert" align="left">
-                        <img src="imagens_anuncios/' . $row_usuario['foto'] . '" class="img img-responsive img-thumbnail" width="200">
-                        <div style="position: absolute; top: 255px;">
-                        <p style="
-                        padding-left: 210px;
-                        position: relative;
-                        color: #000;"
-                        ><b> Anunciante:</b> ' . $row_usuario['nome_completo'] . ' </p>
-                        <p style="
-                        padding-left: 210px;
-                        position: relative;
-                        color: #000;"
-                        ><b> Modelo:</b> ' . $row_usuario['modelo'] . ' </p>
-                        <p style="
-                        padding-left: 210px;
-                        position: relative;
-                        color: #000;"
-                        ><b> Marca:</b> ' . $row_usuario['marca'] . ' </p>
-                        <p style="
-                        padding-left: 210px;
-                        position: relative;
-                        color: #000;"
-                        ><b> Valor:</b> R$ ' . $row_usuario['valor'] . ' </p>
-                        <p style="
-                        padding-left: 210px;
-                        position: relative;
-                        color: #000;"
-                        ><b> Descrição:</b> ' . $row_usuario['descricao'] . ' </p>                           
-                        </div>' ?>
-                        <?php
-                            if($_SESSION['usuarioId'] === $row_usuario['us_id']){
-                        ?>   
-                        <a href="excluir.php?id=<?php echo $row_usuario['veiculo_id'] ?>"  class="btn btn-danger" style="
-                            position: absolute;
-                            right: 10%;
-                        ">Excluir anuncio</a>
-                        <?php       
-                            }
-                        '
+                while($row_usuario = mysqli_fetch_assoc($res_lista)){ 
+                    echo '<div class="alert alert-success" align="left">';
+                    echo '<div style="position: absolute;">';
+                    echo '<img src="imagens_anuncios/' . $row_usuario['foto'] . '" class="img img-responsive img-thumbnail" width="200">';
+                    echo '</div>';
+                   
+                    echo '<div>';
+                    echo '<p style="padding-left: 210px; position: relative;color: #000;">
+                    <b> Anunciante:</b> ' . $row_usuario['nome_completo'] . '</p><br>';
+                    
+                    echo '<p style="padding-left: 210px; position: relative;color: #000;">
+                    <b> Modelo:</b> ' . $row_usuario['modelo'] . '</p><br>';
+                    
+                    echo '<p style="padding-left: 210px; position: relative;color: #000;">
+                    <b> Marca:</b> ' . $row_usuario['marca'] . '</p><br>';
+                    
+                    echo '<p style="padding-left: 210px; position: relative;color: #000;">
+                    <b> Valor:</b> R$ ' . $row_usuario['valor'] . '</p><br>';
+                    
+                    echo '<p style="padding-left: 210px; position: relative;color: #000;">
+                    <b> Descrição:</b> ' . $row_usuario['descricao'] . '</p><br>';               
                         
-                        
-                    </div><br>'
-                    ; 
+                    if($_SESSION['usuarioId'] === $row_usuario['us_id']){
+                    
+                        echo "<a href='excluir.php?id=" . $row_usuario['veiculo_id'] . "'  class='btn btn-danger'>Excluir anuncio</a>";
+                            
+                    }
+
+                    echo '</div>';
+                    echo '</div>';
                 }
             ?>
             </div>
@@ -141,6 +146,5 @@ include_once("./banco/conexao.php");
                 </small>
             </div>
     
-    </div>
     </body>
 </html>
